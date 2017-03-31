@@ -7,11 +7,13 @@
 **/
 function Cube(length) {
   // 1a - create a length property that is equal to the provided argument, length
-
+  this.length = length;
   // 1b - Create a volume method that returns the volume of the cube
   // The volume of a cube is the length to the third power
   // PRO TIP: Consider using Math.pow, a built-in JavaScript method to calculate this
-
+  this.volume = function(length) {
+    return Math.pow(length , 3);
+  }; // end this.volume
 
 
 }
@@ -25,11 +27,9 @@ function Cube(length) {
 **/
 function RollingChair(type, color) {
   // 2a - Create a type property that is equal to the provided argument, type
-
-
+  this.type = type;
   // 2b - Create a color property that is equal to the provided argument, color
-
-
+  this.color = color;
 }
 
 // 3 - Create properties and methods for the Room constructor
@@ -44,24 +44,24 @@ function RollingChair(type, color) {
 
 function Room(capacity) {
   // 3a - Create a capacity property that is equal to the provided array's first index
-
-
+  this.capacity = capacity[0];
   // 3b - Create a rollingChairs property that is equal to an empty array
-
-
+  this.rollingChairs = [];
   // 3b - Create a cubes property that is equal to an empty array
-
-
+  this.cubes = [];
 }
 
 // 4 - The following function should create a Room object from an array of room data
 // and return the created room
 function convertRooms(roomAsArray) {
   // 4a - Create a room object using value for the capacity
+  var room = new Room(value);
   // 4b - Create another loop that adds new rolling chair objects with type "rolling"
   // and the color provided in the array to the created room's rollingChairs array
+
   // 4c - Create yet another loop that adds new cube objects with a length of 24 to
   // the created room's cubes array
+
   // 4d - return the room object
 
 
