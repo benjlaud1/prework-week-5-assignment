@@ -11,12 +11,12 @@ function Cube(length) {
   // 1b - Create a volume method that returns the volume of the cube
   // The volume of a cube is the length to the third power
   // PRO TIP: Consider using Math.pow, a built-in JavaScript method to calculate this
-  this.volume = function(length) {
-    return Math.pow(length , 3);
+  this.volume = function() {
+    return Math.pow(this.length , 3);
   }; // end this.volume
 
 
-}
+} // end Cube
 
 // 2 - Create properties and methods for the Rolling Chair constructor
 /**
@@ -30,7 +30,7 @@ function RollingChair(type, color) {
   this.type = type;
   // 2b - Create a color property that is equal to the provided argument, color
   this.color = color;
-}
+} // end RollingChair
 
 // 3 - Create properties and methods for the Room constructor
 /**
@@ -49,30 +49,28 @@ function Room(capacity) {
   this.rollingChairs = [];
   // 3b - Create a cubes property that is equal to an empty array
   this.cubes = [];
-}
+} // end Room
 
 // 4 - The following function should create a Room object from an array of room data
 // and return the created room
 function convertRooms(roomAsArray) {
   // 4a - Create a room object using value for the capacity
-  var room = new Room(value);
+  var room = new Room(roomAsArray);
   // 4b - Create another loop that adds new rolling chair objects with type "rolling"
   // and the color provided in the array to the created room's rollingChairs array
-
+  for (var i=0; i<roomAsArray[1]; i++) {
+    var chair = new RollingChair( 'rolling', roomAsArray[3]);
+    room.rollingChairs.push(chair);
+  }
   // 4c - Create yet another loop that adds new cube objects with a length of 24 to
   // the created room's cubes array
-
+  for (var j=0; j<roomAsArray[2]; j++) {
+    var cube = new Cube(24);
+    room.cubes.push(cube);
+  }
   // 4d - return the room object
-
-
-
-
-
-
-
-
-
-}
+  return room;
+} // end convertRooms
 
 // For each inner array we have [capacity, rollingChairs, cubes, color of seats]
 var roomsArray = [[20, 14, 12, 'red'], [24, 10, 40, 'blue'], [23, 18, 30, 'black'], [18, 13, 13, 'blue']];
@@ -83,12 +81,12 @@ var roomsArray = [[20, 14, 12, 'red'], [24, 10, 40, 'blue'], [23, 18, 30, 'black
 // store all the converted rooms objects in convertedRoomsArray
 function convertRoomsList(arrayOfRooms){
   var convertedRoomsArray = [];
-
-
-
+  for (var i=0; i<arrayOfRooms.length; i++) {
+    convertedRoomsArray.push(convertRooms(arrayOfRooms[i]));
+  }
   //return convertedRoomsArray to make it available outside this function:
   return convertedRoomsArray;
-}
+}// end convertRoomsList
 
 //Call convertRoomsList
-convertRoomsList(roomsArray);
+var myRoom = convertRoomsList(roomsArray);
